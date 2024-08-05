@@ -1,0 +1,4 @@
+---
+
+xrdp_package: xrdp
+xrdp_state: present

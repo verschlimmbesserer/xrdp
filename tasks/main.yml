@@ -1,0 +1,21 @@
+---
+
+- name: Install xrdp
+  ansible.builtin.apt:
+    name: "{{ xrdp_package }}"
+    state: "{{ xrdp_state }}"
+
+
+- name: Configure xrdp
+  ansible.builtin.template:
+    src: xrdp.ini.j2
+    dest: /etc/xrdp/xrdp.ini
+    owner: root
+    group: root
+    mode: "0644"
+
+- name: Start xrdp service
+  ansible.builtin.service:
+    name: xrdp
+    state: started
+    enabled: true
